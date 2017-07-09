@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sup wit the moon?</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+
+    <style media="screen">
+      html {
+        display: table;
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        display: table-cell;
+        padding: 20px;
+
+        text-align: center;
+        vertical-align: middle;
+
+        background-size: 160%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: black;
+      }
+
+      h1 {
+        color: white;
+        font-family: 'Yellowtail', cursive;
+        font-size: 64px;
+        font-weight: normal;
+        text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <script type="text/javascript">
+      (function () {
+        var now = new Date();
+
+        function phaseDays () {
+        	var lunarPhase = 2551443;
+
+          now.setMinutes(20);
+          now.setSeconds(35);
+          now.setMilliseconds(0);
+
+        	var knownNewMoon = new Date(1970, 0, 7, 20, 35, 0);
+
+        	var phase = ((now.getTime() - knownNewMoon.getTime()) / 1000) % lunarPhase;
+
+        	return Math.floor(phase /(24 * 60 * 60)) + 1;
+        }
+
+        function setBackground () {
+          var url = "http://api.usno.navy.mil/imagery/moon.png?date=";
+
+          url += (now.getMonth() + 1) + "/" + now.getDate() + "/" + now.getFullYear();
+
+          document.body.style.backgroundImage = "url(" + url + ")";
+        }
+
+        function setHeading () {
+          var heading = document.createElement("h1");
+          var headingTextNode = document.createTextNode(getHeadingText());
+          heading.appendChild(headingTextNode);
+
+          document.body.appendChild(heading);
+        }
+
+        function getHeadingText () {
+          var phase = phaseDays();
+
+          if (phase == 16) {
+            return "the moon is lit af";
+          } else if (phase == 30) {
+            return "new moon, who dis?";
+          } else if (phase == 23) {
+            return "last quarter, y'all";
+          } else if (phase == 7) {
+            return "first quarter, sup?";
+          } else if (phase < 16) {
+            if (phase < 8) {
+              return "waxing crescent in da house";
+            } else {
+              return "waxing gibbous in da house";
+            }
+          } else if (phase > 16) {
+            if (phase > 24) {
+              return "waning gibbous in da house";
+            } else {
+              return "waning crescent in da house";
+            }
+          }
+        }
+
+        setBackground();
+        setHeading();
+      }())
+    </script>
+  </body>
+</html>
