@@ -53,7 +53,24 @@
 
     <script type="text/javascript">
       (function () {
-        var now = new Date();
+        var now;
+
+        function setNow() {
+          var queryDate = getQueryVariable("date")
+
+          now = new Date();
+
+          if (queryDate) {
+            var mdy = queryDate.split("/");
+            var m = parseInt(mdy[0]) - 1,
+                d = parseInt(mdy[1]),
+                y = parseInt(mdy[2]);
+
+            now.setMonth(m);
+            now.setDate(d);
+            now.setFullYear(y);
+          }
+        }
 
         function phaseDays () {
         	var lunarPhase = 2551443;
@@ -137,6 +154,19 @@
           }
         }
 
+        function getQueryVariable(variable) {
+          var query = window.location.search.substring(1);
+          var vars = query.split("&");
+
+          for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+          }
+
+         return(false);
+        }
+
+        setNow();
         setBackground();
         setHeading();
       }())
