@@ -77,26 +77,52 @@
         function getHeadingText () {
           var phase = phaseDays();
 
-          if (phase == 16) {
-            return "the moon is lit af";
-          } else if (phase == 30) {
-            return "new moon, who dis?";
-          } else if (phase == 23) {
-            return "last quarter, y'all";
-          } else if (phase == 7) {
-            return "first quarter, sup?";
-          } else if (phase < 16) {
-            if (phase < 8) {
+          switch (phase) {
+            case 1:
+              return "moon, is that you?"
+            case 2:
+            case 3:
+            case 4:
               return "waxing crescent in da house";
-            } else {
+            case 5:
+            case 6:
+            case 7:
+              return "you call that a waxing crescent?";
+            case 8:
+              return "first quarter, sup?";
+            case 9:
+            case 10:
+            case 11:
               return "wax dat gibbous";
-            }
-          } else if (phase > 16) {
-            if (phase > 24) {
-              return "waning crescent killin' it rn";
-            } else {
+            case 12:
+            case 13:
+            case 14:
+              return "✌️ waxing gibous";
+            case 15:
+              return "you lookin' good, moon";
+            case 16:
+              return "the moon: 💯";
+            case 17:
+              return "the moon is lit af";
+            case 18:
+              return "so much moon!";
+            case 19:
+            case 20:
+            case 21:
+            case 22:
               return "waning gibbous on fleek";
-            }
+            case 23:
+              return "last quarter, y'all";
+            case 24:
+            case 25:
+            case 26:
+            case 27:
+            case 28:
+              return "dat waning crescent tho";
+            case 29:
+              return "l8r, moon"
+            case 30:
+              return "new moon, who dis?";
           }
         }
 
