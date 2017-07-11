@@ -30,10 +30,21 @@
       h1 {
         color: white;
         font-family: 'Yellowtail', cursive;
-        font-size: 64px;
         font-weight: normal;
         line-height: 1.2;
-        text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+        text-shadow: 10px 10px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      @media (orientation: portrait) {
+        h1 {
+          font-size: 25vw;
+        }
+      }
+
+      @media (orientation: landscape) {
+        h1 {
+          font-size: 25vh;
+        }
       }
     </style>
   </head>
