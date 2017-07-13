@@ -29,22 +29,11 @@
 
       h1 {
         color: white;
+        font-size: 20vmin;
         font-family: 'Yellowtail', cursive;
         font-weight: normal;
-        line-height: 1.2;
+        line-height: 1.1;
         text-shadow: 10px 10px 40px rgba(0, 0, 0, 0.6);
-      }
-
-      @media (orientation: portrait) {
-        h1 {
-          font-size: 25vw;
-        }
-      }
-
-      @media (orientation: landscape) {
-        h1 {
-          font-size: 25vh;
-        }
       }
     </style>
   </head>
@@ -104,7 +93,7 @@
 
         function getHeadingText () {
           var phase = phaseDays();
-
+console.log(phase);
           switch (phase) {
             case 1:
               return "moon, is that you?"
@@ -138,7 +127,7 @@
             case 20:
             case 21:
             case 22:
-              return "waning gibbous on fleek";
+              return "Waning gibbous on fleek";
             case 23:
               return "last quarter, y'all";
             case 24:
